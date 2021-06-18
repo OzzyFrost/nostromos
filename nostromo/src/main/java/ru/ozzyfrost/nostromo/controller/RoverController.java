@@ -1,5 +1,6 @@
 package ru.ozzyfrost.nostromo.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +17,7 @@ import java.util.List;
 import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
 
 @RestController
+@Slf4j
 public class RoverController {
     @Autowired
     private RoverService roverService;
@@ -34,6 +36,7 @@ public class RoverController {
 
     @RequestMapping(value = "/rover/discover", method = RequestMethod.GET, produces = APPLICATION_JSON_VALUE)
     public List<Planet> discoveryPlanet() {
+        log.info("nostromo GET /rover/discover");
         return roverDiscovery.getDiscoveryListPlanet();
     }
 }
